@@ -1,0 +1,22 @@
+{
+  "name": "weekend-2-challenge",
+  "version": "1.0.0",
+  "description": "Second Weekend Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "meow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "tbd"
+  },
+  "keywords": [
+    "code",
+    "challenge"
+  ],
+  "author": "Helena Black",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
