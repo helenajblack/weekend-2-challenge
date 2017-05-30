@@ -6,19 +6,21 @@
   <title>Weekend 2 Challenge</title>
   <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
+    <script src="/vendors/jquery-3.2.1.min.js" charset="utf-8"></script>
   <script src="/scripts/scripts.js" charset="utf-8"></script>
-  <script src="/vendors/jquery-3.2.1.min.js" charset="utf-8"></script>
 </head>
 
 <body>
     <h1>Weekend 2 Challenge</h1>
 
     <h2>Calculator</h2>
-    
+
     <div id="inputFields">
       <input id="inputOne" type="text" placeholder="x">
+      <span id="operator">Ω</span>
       <input id="inputTwo" type="text" placeholder="y">
-      <input id="solution" type="text" placeholder="Solution">
+
+      <span id="solution">?</span>
     </div>
 
     <div class="mathButtons">
@@ -27,6 +29,7 @@
       <button type="button" name="button" id="multiply"> * </button>
       <button type="button" name="button" id="divide"> / </button>
       <button type="button" name="button" id="calculate"> =  </button>
+      <button type="button" name="button" id="clear"> Clear</button>
     </div>
 
     <div class="answerField">

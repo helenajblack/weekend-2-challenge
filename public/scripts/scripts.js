@@ -1,5 +1,11 @@
 $(onReady);
 
+var dataToSend= {
+     x: 0,
+     y: 0,
+     type: ""
+};
+
 //on click - click button and that sends inputs to server
 function onReady() {
 
@@ -8,35 +14,53 @@ function onReady() {
   $('#multiply').on('click', sendMultiply);
   $('#divide').on('click', sendDivide);
   $('#calculate').on('click', getCalculation);
+  $('#clear').on('click', clearInputs);
 }
 
-//    <div id="inputFields">
-//       <input id="inputOne" type="text" placeholder="x">
-//       <input id="inputTwo" type="text" placeholder="y">
-//       <input id="solution" type="text" placeholder="Solution">
-//     </div>
-//
-//     <div class="mathButtons">
-//       <button type="button" name="button" id="add"> + </button>
-//       <button type="button" name="button" id="subtract"> - </button>
-//       <button type="button" name="button" id="multiply"> * </button>
-//       <button type="button" name="button" id="divide"> / </button>
-//       <button type="button" name="button" id="calculate"> =  </button>
-
-//input fields
-
-//buttons that specify add/subtract/multiply/divide
-
-//function that 'if' calculation type button is pressed, sends equation to server
-
 //send input to server
+function sendAdd(){
+  dataToSend.type = "add";
+  $('#operator').text('+');
+  console.log("I'm adding!");
+}
+function sendSubtract(){
+  dataToSend.type= "subtract";
+    $('#operator').text('-');
+  console.log("I'm subtracting!");
+}
+function sendMultiply(){
+  dataToSend.type= "multiply";
+    $('#operator').text('*');
+  console.log("I'm multiplying!");
+}
+function sendDivide(){
+  dataToSend.type= "divide";
+    $('#operator').text('/');
+  console.log("I'm dividing!");
+}
+
+//clear function
+function clearInputs(){
+  $('#inputOne').val('');
+  $('#inputTwo').val('');
+  $('#solution').text('?');
+  $('#operator').text('Ω');
+}
+
+//getCalculation
+function getCalculation(){
+
+  dataToSend.x= $('#inputOne').val();
+  dataToSend.y= $('#inputTwo').val();
+
+//ajax
 $.ajax({
   type: 'POST',
-  url: '/setNumber',
-  data: requestObject,
+  url: '/calculate',
+  data: dataToSend,
   success: function(response) {
     console.log(response);
+    $('#solution').text(response.answer);
   }
 });
-
-//displays response in field
+}

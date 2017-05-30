@@ -1,13 +1,48 @@
-// grab express
+// bare bones
 var express = require('express');
-// create an express app
 var app = express();
+var path = require('path');
+var bodyParser = require('body-parser');
+
+//use
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 // create an express route for the home page
-// http://localhost:8080/
+//get
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-// start the server on port 8080
+
+// listen
 app.listen(8080);
-// send a message
 console.log('Server has started!');
+
+//mathy stuff -- take type and decides process (w/ switch statement)
+app.post('/calculate', function(req, res) {
+  var objectToReturn = {
+    answer: 0
+  };
+  var x = Number(req.body.x);
+  var y = Number(req.body.y);
+
+//switch
+  switch (req.body.type) {
+    case 'add':
+      objectToReturn.answer= x + y;
+      break;
+    case 'subtract':
+      objectToReturn.answer= x - y;
+      break;
+    case 'multiply':
+      objectToReturn.answer= x * y;
+      break;
+    case 'divide':
+      objectToReturn.answer= x / y;
+      break;
+
+  }
+  res.send(objectToReturn);
+});
