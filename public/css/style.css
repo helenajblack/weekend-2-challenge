@@ -1,0 +1,14 @@
+body {
+  background-color: pink;
+  text-align: center;
+  padding-top: 150px;
+}
+
+#inputOne, #inputTwo, #solution {
+  border: 2px solid grey;
+}
+
+h1, h2 {
+  color: grey;
+  font-family: sans-serif;
+}
